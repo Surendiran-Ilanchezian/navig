@@ -7,6 +7,9 @@ import HomeScreen from './screens/HomeScreen';
 import SettingsScreen from './screens/SettingsScreen';
 import Notifications from './screens/Notifications';
 import ProfileScreen from './screens/ProfileScreen';
+import DrawerContent from './screens/DrawerContent';
+import RootStackScreen from './screens/RootStackScreen';
+
 
 const HomeStack = createStackNavigator();
 const DetailsStack = createStackNavigator();
@@ -14,7 +17,7 @@ const NotificStack = createStackNavigator();
 
 const HomestackScreen = () => (
   <HomeStack.Navigator screenOptions={{
-    headerStyle: { backgroundColor: "#ccc" }
+    headerStyle: { backgroundColor: "#cc421c" }
   }}>
     <HomeStack.Screen name="Home" component={HomeScreen} options={{title: 'Overview'}} />
   </HomeStack.Navigator>
@@ -51,12 +54,13 @@ const Drawer = createDrawerNavigator();
 function App() {
   return (
     <NavigationContainer>
-        <Drawer.Navigator initialRouteName="Home">
+    <RootStackScreen/>
+        {/* <Drawer.Navigator drawerContent={props => <DrawerContent {...props}/>}>
         <Drawer.Screen name="Home" component={HomestackScreen} />
         <Drawer.Screen name="Details" component={DetailstackScreen} />
         <Drawer.Screen name="Notifications" component={NotificStackScreen}/>
         <Drawer.Screen name="ProfileScreen" component={ProfileScreen} />
-      </Drawer.Navigator>
+      </Drawer.Navigator> */}
     </NavigationContainer>
   );
 }
