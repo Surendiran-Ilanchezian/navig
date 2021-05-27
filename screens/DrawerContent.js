@@ -5,8 +5,10 @@ import {
   Avatar, Title, Paragraph, Caption, TouchableRipple, Drawer, Switch
 } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-export default function DrawerContent(props) {
+import { AuthContext } from '../components/context';
 
+export default function DrawerContent(props) {
+  const {signOut} =  React.useContext(AuthContext);
   return (
     <View style={{ flex: 1 }}>
       <DrawerContentScrollView {...props}>
@@ -100,7 +102,8 @@ export default function DrawerContent(props) {
           icon={({ color, size }) => (
             <Icon name="exit-to-app" color={color} size={size} />
           )}
-          label="Sign Out" />
+          label="Sign Out"
+          onPress={()=>signOut()} />
       </Drawer.Section>
     </View>
   )

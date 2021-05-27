@@ -1,21 +1,32 @@
-import React, { Component } from 'react';
-import { Text, View, Dimensions, StyleSheet, Image } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
+import React from 'react';
+import { Text, View, Dimensions, StyleSheet,TouchableOpacity ,StatusBar} from 'react-native';
 import MaterialIcon from "react-native-vector-icons/MaterialIcons"
-const SplashScreen = () => {
+import * as Animatable from 'react-native-animatable';
+const SplashScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
+       <StatusBar backgroundColor="#009387" barStyle="light-content" />
       <View style={styles.header}>
-      <Image
-      style={styles.logo}
-        source={require('../src/sample.png')}
-        resizeMode='stretch'
-      />
+        <Animatable.Image
+          animation="bounceIn"
+          duration={1500}
+          style={styles.logo}
+          source={require('../src/sample.png')}
+          resizeMode='stretch'
+        />
       </View>
-      <View style={styles.footer}>
-        <Text>Stay connected with Nature !!!</Text>
-      </View>
-
+      <Animatable.View
+        animation="bounceInUp"
+        style={styles.footer}>
+        <Text style={styles.title}>Stay connected with Nature !!!</Text>
+        <Text style={styles.text}>Stay safe</Text>
+        <View style={styles.button}>
+          <TouchableOpacity style={styles.signIn} onPress={() => navigation.navigate('SignInScreen')}>
+            <Text style={{ color: '#009387',fontSize:14 }}>Sign In</Text>
+            <MaterialIcon name="navigate-next" size={25} color="#009387" />
+          </TouchableOpacity>
+        </View>
+      </Animatable.View>
     </View>
   )
 }
@@ -61,7 +72,7 @@ const styles = StyleSheet.create({
     marginTop: 30
   },
   signIn: {
-    width: 150,
+    width: 50,
     height: 40,
     justifyContent: 'center',
     alignItems: 'center',

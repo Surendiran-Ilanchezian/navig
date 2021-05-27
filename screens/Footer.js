@@ -1,15 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
   View,
   TouchableOpacity,
   StyleSheet,
-  Dimensions,
   Image,
 } from 'react-native';
-import {navigate,toggleDrawer} from '../NavigationService';
-import {  DrawerActions } from '@react-navigation/native';
 
-export default function Footer({ navigation }) {
+function Footer({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.footerBlock}>
@@ -41,7 +38,7 @@ export default function Footer({ navigation }) {
     </View>
   );
 }
-
+export default Footer
 const styles = StyleSheet.create({
   container: {
     width: "100%",
